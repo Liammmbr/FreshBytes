@@ -11,7 +11,7 @@ protein_data_list = []
 #Get individual recipe page
 html_text = requests.get("https://www.allrecipes.com/search?Chicken=Chicken&offset=0&q=Chicken").text
 soup = BeautifulSoup(html_text, 'lxml')
-urls = soup.find_all('a', class_="mntl-card-list-items")
+urls = soup.find_all('a', class_="mntl-card-list-card--extendable")
 
 for url in urls:
     url = BeautifulSoup(requests.get(url.get('href')).text, 'lxml')
@@ -29,7 +29,8 @@ for url in urls:
     carbs_data_list.append(carbs_data)
     protein_data_list.append(protein_data)
 
-# print(calorie_data_list)
-# print(fats_data_list)
-# print(carbs_data_list)
-# print(protein_data_list)
+
+print(calorie_data_list)
+print(fats_data_list)
+print(carbs_data_list)
+print(protein_data_list)
